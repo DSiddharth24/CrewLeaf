@@ -1,3 +1,4 @@
+import { generateCertificate } from '@/lib/pdf-generator';
 import React from 'react';
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'
@@ -58,8 +59,7 @@ export async function POST(
 
         // Since we are in a serverless route, we use renderToFile or renderToStream
         const filePath = path.join(storageDir, `${certNumber}.pdf`)
-        const CertificateDocument = React.createElement(CertificatePDF, { data: pdfData });
-await ReactPDF.renderToFile(CertificateDocument, filePath);
+        await generateCertificate(pdfData, filePath);
 
         const newCert = await db.certificateIssued.create({
             data: {
