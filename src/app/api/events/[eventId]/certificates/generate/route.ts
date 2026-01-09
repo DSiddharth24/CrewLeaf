@@ -57,9 +57,8 @@ export async function POST(
 
         // Since we are in a serverless route, we use renderToFile or renderToStream
         const filePath = path.join(storageDir, `${certNumber}.pdf`)
-        const CertificateDocument = () => <CertificatePDF data={pdfData} />;
-await ReactPDF.renderToFile(<CertificateDocument />, filePath);
-
+        const CertificateDocument = React.createElement(CertificatePDF, { data: pdfData });
+await ReactPDF.renderToFile(CertificateDocument, filePath);
 
         const newCert = await db.certificateIssued.create({
             data: {
