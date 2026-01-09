@@ -9,15 +9,23 @@ import { CertificatePDF } from '@/components/certificates/CertificatePDF'
 import fs from 'fs'
 import path from 'path'
 
+import { NextRequest, NextResponse } from 'next/server';
+
+// 1. Update the signature to accept context with a Promise for params
 export async function POST(
-    req: Request,
-    { params }: { params: { eventId: string } }
+    req: NextRequest, // Changed from Request to NextRequest
+    context: { params: Promise<{ eventId: string }> } 
 ) {
-    const session = await getSession()
-    if (!session?.user?.clubId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // 2. Await the params immediately
+    const { eventId } = await context.params;
+
+    const session = await getSession();
+    if (!session?.user?.clubId) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     const event = await db.event.findUnique({
-        where: { id: params.eventId },
+        where: { id: eventId }, // Use the awaited eventId here
         include: {
             club: true,
             certificateTemplate: true,
@@ -28,7 +36,7 @@ export async function POST(
                 }
             }
         }
-    })
+    });
 
     if (!event || !event.certificateTemplate) {
         return NextResponse.json({ error: 'Event or template not found' }, { status: 404 })
