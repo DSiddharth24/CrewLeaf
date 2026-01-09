@@ -1,6 +1,6 @@
 export const runtime = 'nodejs'; // Explicitly force Node.js runtime
 import React from 'react';
-import ReactPDF from '@react-pdf/renderer';
+import { renderToStream } from '@react-pdf/renderer'
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
