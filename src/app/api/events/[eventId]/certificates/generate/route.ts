@@ -1,13 +1,12 @@
-export const runtime = 'nodejs'; // Explicitly force Node.js runtime
-import React from 'react';
-import { renderToStream } from '@react-pdf/renderer'
-import { NextResponse } from 'next/server'
-import { db } from '@/lib/db'
-import { getSession } from '@/lib/auth'
-import ReactPDF from '@react-pdf/renderer'
-import { CertificatePDF } from '@/components/certificates/CertificatePDF'
-import fs from 'fs'
-import path from 'path'
+import { NextRequest, NextResponse } from 'next/server';
+import { renderToStream } from '@react-pdf/renderer'; // Use named import
+import { db } from '@/lib/db';
+import { getSession } from '@/lib/auth';
+import { CertificatePDF } from '@/components/certificates/CertificatePDF';
+import fs from 'fs';
+import path from 'path';
+
+export const runtime = 'nodejs'; // Ensure this is present
 
 import { NextRequest, NextResponse } from 'next/server';
 
