@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "CrewLeaf",
+    "slug": "crewleaf",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2D5F3F"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.crewleaf.app",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDZA4LxLuzAOHqD610wU24ucdgrbhZdGgc"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#2D5F3F"
+      },
+      "package": "com.crewleaf.app",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDZA4LxLuzAOHqD610wU24ucdgrbhZdGgc"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow CrewLeaf to use your location for field geofencing and attendance verification."
+        }
+      ],
+      "@react-native-community/datetimepicker"
+    ],
+    "extra": {
+      "firebaseApiKey": "AIzaSyCybLnzcXrU8oYYh1Q6d84Qu2n8N3bPxbw",
+      "googleMapsApiKey": "AIzaSyDZA4LxLuzAOHqD610wU24ucdgrbhZdGgc",
+      "razorpayKeyId": "rzp_test_S6SKGkyDq5hNgB",
+      "razorpayKeySecret": "x713KhZE7NKObA6KbAefkapx"
+    }
+  }
+}

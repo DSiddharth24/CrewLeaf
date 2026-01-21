@@ -1,0 +1,48 @@
+{
+    "en": {
+        "translation": {
+            "common": {
+                "getStarted": "Get Started",
+                "login": "Login",
+                "signup": "Sign Up",
+                "email": "Email",
+                "password": "Password",
+                "continueWithGoogle": "Continue with Google",
+                "selectLanguage": "Select Language",
+                "selectRole": "Select Your Role",
+                "continue": "Continue",
+                "cancel": "Cancel",
+                "save": "Save",
+                "submit": "Submit",
+                "delete": "Delete",
+                "edit": "Edit",
+                "done": "Done",
+                "loading": "Loading..."
+            },
+            "languages": {
+                "english": "English",
+                "kannada": "ಕನ್ನಡ (Kannada)",
+                "hindi": "हिन्दी (Hindi)",
+                "tulu": "ತುಳು (Tulu)"
+            },
+            "roles": {
+                "manager": "Manager",
+                "supervisor": "Supervisor",
+                "worker": "Worker",
+                "managerDesc": "Manage fields, workers, tasks, and payments",
+                "supervisorDesc": "Monitor field activities and verify attendance",
+                "workerDesc": "Check in, complete tasks, and track wages"
+            },
+            "auth": {
+                "welcome": "Welcome to CrewLeaf",
+                "loginTitle": "Login to Your Account",
+                "signupTitle": "Create An Account",
+                "emailPlaceholder": "Enter your email",
+                "passwordPlaceholder": "Enter your password",
+                "noAccount": "Don't have an account?",
+                "haveAccount": "Already have an account?",
+                "forgotPassword": "Forgot Password?"
+            }
+        }
+    }
+}
