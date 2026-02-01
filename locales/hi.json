@@ -1,0 +1,48 @@
+{
+    "hi": {
+        "translation": {
+            "common": {
+                "getStarted": "शुरू करें",
+                "login": "लॉगिन",
+                "signup": "साइन अप",
+                "email": "ईमेल",
+                "password": "पासवर्ड",
+                "continueWithGoogle": "गूगल के साथ जारी रखें",
+                "selectLanguage": "भाषा चुनें",
+                "selectRole": "अपनी भूमिका चुनें",
+                "continue": "जारी रखें",
+                "cancel": "रद्द करें",
+                "save": "सहेजें",
+                "submit": "जमा करें",
+                "delete": "हटाएं",
+                "edit": "संपादित करें",
+                "done": "हो गया",
+                "loading": "लोड हो रहा है..."
+            },
+            "languages": {
+                "english": "English",
+                "kannada": "ಕನ್ನಡ (Kannada)",
+                "hindi": "हिन्दी (Hindi)",
+                "tulu": "ತುಳು (Tulu)"
+            },
+            "roles": {
+                "manager": "प्रबंधक (Manager)",
+                "supervisor": "पर्यवेक्षक (Supervisor)",
+                "worker": "श्रमिक (Worker)",
+                "managerDesc": "खेतों, श्रमिकों, कार्यों और भुगतानों का प्रबंधन करें",
+                "supervisorDesc": "क्षेत्र की गतिविधियों की निगरानी करें और उपस्थिति सत्यापित करें",
+                "workerDesc": "चेक-इन करें, कार्य पूरे करें और वेतन ट्रैक करें"
+            },
+            "auth": {
+                "welcome": "CrewLeaf में आपका स्वागत है",
+                "loginTitle": "अपने खाते में लॉगिन करें",
+                "signupTitle": "खाता बनाएँ",
+                "emailPlaceholder": "अपना ईमेल दर्ज करें",
+                "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+                "noAccount": "क्या आपके पास खाता नहीं है?",
+                "haveAccount": "क्या आपके पास पहले से खाता है?",
+                "forgotPassword": "पासवर्ड भूल गए?"
+            }
+        }
+    }
+}

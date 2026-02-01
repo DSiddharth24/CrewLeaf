@@ -28,7 +28,7 @@ const LANGUAGES: Language[] = [
 
 export default function LanguageSelectionScreen() {
     const navigation = useNavigation();
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
     const [scaleAnims] = useState(
         LANGUAGES.map(() => new Animated.Value(1))
@@ -62,8 +62,8 @@ export default function LanguageSelectionScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>Choose Your Language</Text>
-                <Text style={styles.subtitle}>Select your preferred language</Text>
+                <Text style={styles.title}>{t('common.selectLanguage')}</Text>
+                <Text style={styles.subtitle}>{t('common.selectLanguage')}</Text>
             </View>
 
             <ScrollView
@@ -86,7 +86,7 @@ export default function LanguageSelectionScreen() {
                         >
                             <Text style={styles.flag}>{language.flag}</Text>
                             <View style={styles.languageInfo}>
-                                <Text style={styles.languageName}>{language.name}</Text>
+                                <Text style={styles.languageName}>{t(`languages.${language.name.toLowerCase()}`)}</Text>
                                 <Text style={styles.languageNative}>{language.nativeName}</Text>
                             </View>
                             {selectedLanguage === language.code && (
@@ -104,7 +104,7 @@ export default function LanguageSelectionScreen() {
                 onPress={handleContinue}
                 activeOpacity={0.8}
             >
-                <Text style={styles.continueButtonText}>Continue</Text>
+                <Text style={styles.continueButtonText}>{t('common.continue')}</Text>
             </TouchableOpacity>
         </View>
     );

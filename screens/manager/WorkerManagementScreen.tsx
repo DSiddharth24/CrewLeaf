@@ -6,130 +6,76 @@ import {
     FlatList,
     TouchableOpacity,
     TextInput,
-    Alert,
+    ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { collection, query, where, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
-import { auth, db } from '../../config/firebase';
-import { User } from '../../types';
+import { userService } from '../../services/api';
 import { colors, spacing, typography, borderRadius, shadows } from '../../theme';
 
 export default function WorkerManagementScreen() {
     const navigation = useNavigation();
-    const [workers, setWorkers] = useState<User[]>([]);
+    const [workers, setWorkers] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [searchText, setSearchText] = useState('');
-    const [showAddModal, setShowAddModal] = useState(false);
 
     useEffect(() => {
         loadWorkers();
     }, []);
 
     const loadWorkers = async () => {
-        const userId = auth.currentUser?.uid;
-        if (!userId) return;
-
-        const q = query(
-            collection(db, 'users'),
-            where('role', '==', 'worker'),
-            where('managerId', '==', userId)
-        );
-
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const workersData: User[] = [];
-            snapshot.forEach((doc) => {
-                workersData.push({ uid: doc.id, ...doc.data() } as User);
-            });
-            setWorkers(workersData);
-        });
-
-        return () => unsubscribe();
+        try {
+            setLoading(true);
+            const response = await userService.getWorkers();
+            setWorkers(response.data);
+        } catch (error) {
+            console.error('Error loading workers:', error);
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const filteredWorkers = workers.filter((worker) =>
-        worker.name.toLowerCase().includes(searchText.toLowerCase())
+    const filteredWorkers = workers.filter((w: any) =>
+        w.name.toLowerCase().includes(searchText.toLowerCase())
     );
 
-    const renderWorkerCard = ({ item }: { item: User }) => (
-        <TouchableOpacity style={styles.workerCard}>
+    const renderWorkerCard = ({ item }: { item: any }) => (
+        <View style={styles.workerCard}>
             <View style={styles.avatar}>
-                <Text style={styles.avatarText}>
-                    {item.name.charAt(0).toUpperCase()}
-                </Text>
+                <Text style={styles.avatarText}>{item.name.charAt(0)}</Text>
             </View>
-
-            <View style={styles.workerInfo}>
-                <Text style={styles.workerName}>{item.name}</Text>
-                <Text style={styles.workerEmail}>{item.email}</Text>
-                {item.rfidCardId && (
-                    <Text style={styles.cardId}>Card: {item.rfidCardId}</Text>
-                )}
+            <View style={styles.info}>
+                <Text style={styles.name}>{item.name}</Text>
+                <Text style={styles.phone}>{item.phoneNumber}</Text>
+                <Text style={styles.field}>Field: {item.assignedFieldId || 'Not Assigned'}</Text>
             </View>
-
-            <View style={styles.statusIndicator}>
-                <View style={[styles.statusDot, { backgroundColor: colors.gray400 }]} />
-                <Text style={styles.statusText}>Offline</Text>
-            </View>
-        </TouchableOpacity>
+        </View>
     );
 
     return (
         <View style={styles.container}>
-            {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}
-                    style={styles.backButton}
-                >
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Text style={styles.backText}>‹ Back</Text>
                 </TouchableOpacity>
-                <Text style={styles.title}>Worker Management</Text>
-                <TouchableOpacity onPress={() => setShowAddModal(true)}>
-                    <Text style={styles.addText}>+ Add</Text>
-                </TouchableOpacity>
+                <Text style={styles.title}>My Workforce</Text>
             </View>
 
-            {/* Search */}
-            <View style={styles.searchContainer}>
+            <View style={styles.searchBar}>
                 <TextInput
-                    style={styles.searchInput}
-                    placeholder="Search workers..."
+                    style={styles.input}
+                    placeholder="Search by name..."
                     value={searchText}
                     onChangeText={setSearchText}
                 />
             </View>
 
-            {/* Stats */}
-            <View style={styles.stats}>
-                <View style={styles.statItem}>
-                    <Text style={styles.statNumber}>{workers.length}</Text>
-                    <Text style={styles.statLabel}>Total Workers</Text>
-                </View>
-                <View style={styles.statItem}>
-                    <Text style={styles.statNumber}>0</Text>
-                    <Text style={styles.statLabel}>Present Today</Text>
-                </View>
-                <View style={styles.statItem}>
-                    <Text style={styles.statNumber}>0</Text>
-                    <Text style={styles.statLabel}>On Task</Text>
-                </View>
-            </View>
-
-            {/* Workers List */}
-            {filteredWorkers.length === 0 ? (
-                <View style={styles.emptyState}>
-                    <Text style={styles.emptyIcon}>👥</Text>
-                    <Text style={styles.emptyTitle}>No Workers Found</Text>
-                    <Text style={styles.emptyText}>
-                        {searchText ? 'Try a different search' : 'Add workers to get started'}
-                    </Text>
-                </View>
-            ) : (
+            {loading ? <ActivityIndicator style={{ marginTop: 50 }} color={colors.primary} /> : (
                 <FlatList
                     data={filteredWorkers}
                     renderItem={renderWorkerCard}
-                    keyExtractor={(item) => item.uid}
+                    keyExtractor={(item: any) => item.id}
                     contentContainerStyle={styles.listContent}
-                    showsVerticalScrollIndicator={false}
+                    ListEmptyComponent={<Text style={styles.emptyText}>No workers found</Text>}
                 />
             )}
         </View>
@@ -137,149 +83,19 @@ export default function WorkerManagementScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.background,
-    },
-    header: {
-        backgroundColor: colors.primary,
-        paddingTop: spacing.xxl * 2,
-        paddingBottom: spacing.lg,
-        paddingHorizontal: spacing.lg,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    backButton: {
-        padding: spacing.sm,
-    },
-    backText: {
-        color: colors.white,
-        fontSize: typography.fontSize.xl,
-        fontWeight: '600',
-    },
-    title: {
-        fontSize: typography.fontSize.xl,
-        fontWeight: 'bold',
-        color: colors.white,
-    },
-    addText: {
-        color: colors.white,
-        fontSize: typography.fontSize.md,
-        fontWeight: '600',
-    },
-    searchContainer: {
-        padding: spacing.lg,
-    },
-    searchInput: {
-        backgroundColor: colors.white,
-        borderRadius: borderRadius.lg,
-        paddingHorizontal: spacing.md,
-        paddingVertical: spacing.sm,
-        fontSize: typography.fontSize.md,
-        ...shadows.sm,
-    },
-    stats: {
-        flexDirection: 'row',
-        paddingHorizontal: spacing.lg,
-        marginBottom: spacing.md,
-    },
-    statItem: {
-        flex: 1,
-        backgroundColor: colors.white,
-        padding: spacing.md,
-        borderRadius: borderRadius.md,
-        marginRight: spacing.sm,
-        alignItems: 'center',
-        ...shadows.sm,
-    },
-    statNumber: {
-        fontSize: typography.fontSize.xl,
-        fontWeight: 'bold',
-        color: colors.primary,
-    },
-    statLabel: {
-        fontSize: typography.fontSize.xs,
-        color: colors.gray600,
-        marginTop: spacing.xs,
-        textAlign: 'center',
-    },
-    listContent: {
-        padding: spacing.lg,
-    },
-    workerCard: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: colors.white,
-        padding: spacing.md,
-        borderRadius: borderRadius.lg,
-        marginBottom: spacing.md,
-        ...shadows.sm,
-    },
-    avatar: {
-        width: 48,
-        height: 48,
-        borderRadius: borderRadius.full,
-        backgroundColor: colors.primary,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: spacing.md,
-    },
-    avatarText: {
-        fontSize: typography.fontSize.xl,
-        fontWeight: 'bold',
-        color: colors.white,
-    },
-    workerInfo: {
-        flex: 1,
-    },
-    workerName: {
-        fontSize: typography.fontSize.md,
-        fontWeight: '600',
-        color: colors.gray900,
-    },
-    workerEmail: {
-        fontSize: typography.fontSize.sm,
-        color: colors.gray600,
-        marginTop: spacing.xs,
-    },
-    cardId: {
-        fontSize: typography.fontSize.xs,
-        color: colors.gray500,
-        marginTop: spacing.xs,
-    },
-    statusIndicator: {
-        alignItems: 'center',
-    },
-    statusDot: {
-        width: 12,
-        height: 12,
-        borderRadius: borderRadius.full,
-        marginBottom: spacing.xs,
-    },
-    statusText: {
-        fontSize: typography.fontSize.xs,
-        color: colors.gray600,
-    },
-    emptyState: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: spacing.xxl,
-    },
-    emptyIcon: {
-        fontSize: 80,
-        marginBottom: spacing.lg,
-    },
-    emptyTitle: {
-        fontSize: typography.fontSize.xl,
-        fontWeight: 'bold',
-        color: colors.gray900,
-        marginBottom: spacing.sm,
-    },
-    emptyText: {
-        fontSize: typography.fontSize.md,
-        color: colors.gray600,
-        textAlign: 'center',
-    },
+    container: { flex: 1, backgroundColor: colors.background },
+    header: { backgroundColor: colors.primary, paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
+    backText: { color: '#fff', fontSize: 24, marginRight: 15 },
+    title: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
+    searchBar: { padding: 20 },
+    input: { backgroundColor: '#fff', padding: 12, borderRadius: 10, ...shadows.sm },
+    listContent: { paddingHorizontal: 20 },
+    workerCard: { backgroundColor: '#fff', padding: 15, borderRadius: 12, marginBottom: 12, flexDirection: 'row', alignItems: 'center', ...shadows.sm },
+    avatar: { width: 50, height: 50, borderRadius: 25, backgroundColor: colors.primary + '20', alignItems: 'center', justifyContent: 'center', marginRight: 15 },
+    avatarText: { fontSize: 20, fontWeight: 'bold', color: colors.primary },
+    info: { flex: 1 },
+    name: { fontWeight: 'bold', fontSize: 16, color: colors.gray900 },
+    phone: { color: colors.gray600, fontSize: 13, marginTop: 2 },
+    field: { color: colors.gray500, fontSize: 12, marginTop: 4 },
+    emptyText: { textAlign: 'center', marginTop: 50, color: colors.gray500 }
 });

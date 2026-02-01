@@ -93,6 +93,7 @@ export default function AnalyticsScreen() {
                     width={screenWidth - spacing.lg * 2 - spacing.md * 2}
                     height={220}
                     yAxisLabel="₹"
+                    yAxisSuffix=""
                     chartConfig={{
                         ...chartConfig,
                         color: (opacity = 1) => `rgba(139, 69, 19, ${opacity})`, // secondary

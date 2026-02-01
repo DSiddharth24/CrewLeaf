@@ -105,13 +105,13 @@ export default function ManagerDashboard() {
 
                     <TouchableOpacity
                         style={styles.actionButton}
-                        onPress={() => navigation.navigate('FieldManagement' as never)}
+                        onPress={() => navigation.navigate('WorkerManagement' as never)}
                     >
-                        <Text style={styles.actionIcon}>🗺️</Text>
+                        <Text style={styles.actionIcon}>👥</Text>
                         <View style={styles.actionContent}>
-                            <Text style={styles.actionTitle}>Field Management</Text>
+                            <Text style={styles.actionTitle}>My Workers</Text>
                             <Text style={styles.actionDescription}>
-                                Create and manage fields
+                                View assigned plantation labour
                             </Text>
                         </View>
                         <Text style={styles.actionArrow}>›</Text>

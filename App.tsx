@@ -9,11 +9,8 @@ import LanguageSelectionScreen from './screens/LanguageSelectionScreen';
 import RoleSelectionScreen from './screens/RoleSelectionScreen';
 import AuthScreen from './screens/AuthScreen';
 
-// Manager Screens
 import ManagerDashboard from './screens/manager/ManagerDashboard';
 import FieldManagementScreen from './screens/manager/FieldManagementScreen';
-import AddFieldMethodScreen from './screens/manager/AddFieldMethodScreen';
-import DrawFieldMapScreen from './screens/manager/DrawFieldMapScreen';
 import WorkerManagementScreen from './screens/manager/WorkerManagementScreen';
 import AttendanceViewScreen from './screens/manager/AttendanceViewScreen';
 import TaskManagementScreen from './screens/manager/TaskManagementScreen';
@@ -27,6 +24,9 @@ import SettingsScreen from './screens/SettingsScreen';
 import SupervisorDashboard from './screens/supervisor/SupervisorDashboard';
 import SupervisorTaskScreen from './screens/supervisor/SupervisorTaskScreen';
 import AttendanceVerificationScreen from './screens/supervisor/AttendanceVerificationScreen';
+import CreateUserScreen from './screens/supervisor/CreateUserScreen';
+import CreateFieldScreen from './screens/supervisor/CreateFieldScreen';
+import DeviceAssignmentScreen from './screens/supervisor/DeviceAssignmentScreen';
 
 // Worker Screens
 import WorkerHome from './screens/worker/WorkerHome';
@@ -34,15 +34,11 @@ import ReportIssueScreen from './screens/worker/ReportIssueScreen';
 import TaskOutputScreen from './screens/worker/TaskOutputScreen';
 import LeaveRequestScreen from './screens/worker/LeaveRequestScreen';
 
-// Background Services
-import IoTListener from './services/IoTListener';
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <IoTListener />
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{
@@ -59,8 +55,6 @@ export default function App() {
         {/* Manager Module */}
         <Stack.Screen name="ManagerDashboard" component={ManagerDashboard} />
         <Stack.Screen name="FieldManagement" component={FieldManagementScreen} />
-        <Stack.Screen name="AddFieldMethod" component={AddFieldMethodScreen} />
-        <Stack.Screen name="DrawFieldMap" component={DrawFieldMapScreen} />
         <Stack.Screen name="WorkerManagement" component={WorkerManagementScreen} />
         <Stack.Screen name="AttendanceView" component={AttendanceViewScreen} />
         <Stack.Screen name="TaskManagement" component={TaskManagementScreen} />
@@ -73,6 +67,9 @@ export default function App() {
         <Stack.Screen name="SupervisorDashboard" component={SupervisorDashboard} />
         <Stack.Screen name="SupervisorTaskVerification" component={SupervisorTaskScreen} />
         <Stack.Screen name="AttendanceVerification" component={AttendanceVerificationScreen} />
+        <Stack.Screen name="CreateUser" component={CreateUserScreen} />
+        <Stack.Screen name="CreateField" component={CreateFieldScreen} />
+        <Stack.Screen name="DeviceAssignment" component={DeviceAssignmentScreen} />
 
         {/* Worker Module */}
         <Stack.Screen name="WorkerHome" component={WorkerHome} />

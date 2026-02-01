@@ -2,6 +2,9 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import en from './locales/en.json';
+import kn from './locales/kn.json';
+import hi from './locales/hi.json';
+import tuu from './locales/tuu.json';
 
 // Language detection
 const languageDetector = {
@@ -21,13 +24,12 @@ i18n
     .use(languageDetector as any)
     .use(initReactI18next)
     .init({
-        compatibilityJSON: 'v3',
+        compatibilityJSON: 'v4',
         resources: {
             en: en,
-            // Add other languages here when translations are ready
-            // kn: kannadaTranslations,
-            // hi: hindiTranslations,
-            // tuu: tuluTranslations,
+            kn: kn,
+            hi: hi,
+            tuu: tuu,
         },
         fallbackLng: 'en',
         interpolation: {

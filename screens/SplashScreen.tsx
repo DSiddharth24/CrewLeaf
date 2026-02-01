@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { colors, spacing, typography, borderRadius } from '../theme';
 
 export default function SplashScreen() {
     const navigation = useNavigation();
+    const { t } = useTranslation();
     const fadeAnim = new Animated.Value(0);
     const scaleAnim = new Animated.Value(0.8);
 
@@ -53,7 +55,7 @@ export default function SplashScreen() {
                 onPress={handleGetStarted}
                 activeOpacity={0.8}
             >
-                <Text style={styles.buttonText}>Get Started</Text>
+                <Text style={styles.buttonText}>{t('common.getStarted')}</Text>
             </TouchableOpacity>
 
             <Text style={styles.version}>Version 1.0.0</Text>

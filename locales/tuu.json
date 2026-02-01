@@ -1,0 +1,48 @@
+{
+    "tuu": {
+        "translation": {
+            "common": {
+                "getStarted": "ಸುರು ಮಲ್ಪುಲೆ",
+                "login": "ಲಾಗಿನ್",
+                "signup": "ಸೈನ್ ಅಪ್",
+                "email": "ಇಮೇಲ್",
+                "password": "ಪಾಸ್ವರ್ಡ್",
+                "continueWithGoogle": "ಗೂಗಲ್ ಮೂಲಕ ಮುಂದುವರಿಲೆ",
+                "selectLanguage": "ಭಾಷೆನ್ ಆಯ್ದೊಲೆ",
+                "selectRole": "ನಿಕ್ಲೆನ ಪಾತ್ರೊನ್ ಆಯ್ದೊಲೆ",
+                "continue": "ಮುಂದುವರಿಲೆ",
+                "cancel": "ರದ್ದು ಮನ್ಪುಲೆ",
+                "save": "ಉಳಿತಾಯ ಮನ್ಪುಲೆ",
+                "submit": "ಸಲ್ಲಿಸಲೆ",
+                "delete": "ಅಳಿಸಲೆ",
+                "edit": "ತಿದ್ದಲೆ",
+                "done": "ಮುಗಿಯುಂಡು",
+                "loading": "ಲೋಡ್ ಆವೊಂದುಂಡು..."
+            },
+            "languages": {
+                "english": "English",
+                "kannada": "ಕನ್ನಡ (Kannada)",
+                "hindi": "हिन्दी (Hindi)",
+                "tulu": "ತುಳು (Tulu)"
+            },
+            "roles": {
+                "manager": "ವ್ಯವಸ್ಥಾಪಕ (Manager)",
+                "supervisor": "ಮೇಲ್ವಿಚಾರಕ (Supervisor)",
+                "worker": "ಕೆಲಸದಾರ್ (Worker)",
+                "managerDesc": "ಕ್ಷೇತಗಳು, ಕೆಲಸದಾರ್ ನಕುಲು, ಕೆಲ್ಸ ಬೊಕ್ಕ ಪಾವತಿಲೆನ್ ನಿರ್ವಹಿಸಲೆ",
+                "supervisorDesc": "ಕ್ಷೇತ್ರದ ಕೆಲಸಲೆನ್ ತೂಲೆ ಬೊಕ್ಕ ಹಾಜರಾತಿನ್ ಪರಿಶೀಲಿಸಲೆ",
+                "workerDesc": "ಚೆಕ್-ಇನ್ ಮನ್ಪುಲೆ, ಕೆಲ್ಸ ಮುಗಿಲೆ ಬೊಕ್ಕ ಸಂಬಳನ್ ತೂಲೆ"
+            },
+            "auth": {
+                "welcome": "CrewLeaf ಗ್ ಸ್ವಾಗತ",
+                "loginTitle": "ನಿಕ್ಲೆನ ಖಾತೆಗ್ ಲಾಗಿನ್ ಮನ್ಪುಲೆ",
+                "signupTitle": "ಪೊಸ ಖಾತೆನ್ ಸುರು ಮನ್ಪುಲೆ",
+                "emailPlaceholder": "ನಿಕ್ಲೆನ ಇಮೇಲ್ ಬರೆಯಿರಿ",
+                "passwordPlaceholder": "ನಿಕ್ಲೆನ ಪಾಸ್ವರ್ಡ್ ಬರೆಯಿರಿ",
+                "noAccount": "ಖಾತೆ ಇಜ್ಜೆ ಅತ್ತಾ?",
+                "haveAccount": "ಈಗಾಗಲೇ ಖಾತೆ ಉಂಡಾ?",
+                "forgotPassword": "ಪಾಸ್ವರ್ಡ್ ಮದತ್ ಪೋಯಿನಾ?"
+            }
+        }
+    }
+}

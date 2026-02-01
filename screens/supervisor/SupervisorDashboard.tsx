@@ -60,6 +60,48 @@ export default function SupervisorDashboard() {
                     </View>
                 </View>
 
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('CreateUser' as never)}
+                >
+                    <View style={[styles.iconBox, { backgroundColor: colors.primary + '20' }]}>
+                        <Text style={styles.icon}>👤</Text>
+                    </View>
+                    <View style={styles.actionInfo}>
+                        <Text style={styles.actionTitle}>Create Account</Text>
+                        <Text style={styles.actionDesc}>Setup Manager or Worker</Text>
+                    </View>
+                    <Text style={styles.arrow}>›</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('CreateField' as never)}
+                >
+                    <View style={[styles.iconBox, { backgroundColor: colors.accent + '20' }]}>
+                        <Text style={styles.icon}>🗺️</Text>
+                    </View>
+                    <View style={styles.actionInfo}>
+                        <Text style={styles.actionTitle}>Field Setup</Text>
+                        <Text style={styles.actionDesc}>Map new plantation areas</Text>
+                    </View>
+                    <Text style={styles.arrow}>›</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => navigation.navigate('DeviceAssignment' as never)}
+                >
+                    <View style={[styles.iconBox, { backgroundColor: colors.secondary + '20' }]}>
+                        <Text style={styles.icon}>📲</Text>
+                    </View>
+                    <View style={styles.actionInfo}>
+                        <Text style={styles.actionTitle}>Device Management</Text>
+                        <Text style={styles.actionDesc}>Assign IoT readers to fields</Text>
+                    </View>
+                    <Text style={styles.arrow}>›</Text>
+                </TouchableOpacity>
+
                 {/* Action Menu */}
                 <Text style={styles.sectionTitle}>Daily Operations</Text>
 
@@ -67,12 +109,12 @@ export default function SupervisorDashboard() {
                     style={styles.actionButton}
                     onPress={() => navigation.navigate('AttendanceVerification' as never)}
                 >
-                    <View style={[styles.iconBox, { backgroundColor: colors.primary + '20' }]}>
+                    <View style={[styles.iconBox, { backgroundColor: colors.success + '20' }]}>
                         <Text style={styles.icon}>📋</Text>
                     </View>
                     <View style={styles.actionInfo}>
-                        <Text style={styles.actionTitle}>Take Attendance</Text>
-                        <Text style={styles.actionDesc}>Mark worker check-ins/outs</Text>
+                        <Text style={styles.actionTitle}>View Attendance</Text>
+                        <Text style={styles.actionDesc}>Filter logs for all workers</Text>
                     </View>
                     <Text style={styles.arrow}>›</Text>
                 </TouchableOpacity>

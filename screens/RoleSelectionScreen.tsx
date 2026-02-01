@@ -67,15 +67,15 @@ export default function RoleSelectionScreen() {
     const handleContinue = async () => {
         if (selectedRole) {
             await AsyncStorage.setItem('user-role', selectedRole);
-            navigation.navigate('Auth' as never, { role: selectedRole } as never);
+            (navigation.navigate as any)('Auth', { role: selectedRole });
         }
     };
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>Select Your Role</Text>
-                <Text style={styles.subtitle}>Choose what describes you best</Text>
+                <Text style={styles.title}>{t('common.selectRole')}</Text>
+                <Text style={styles.subtitle}>{t('common.selectRole')}</Text>
             </View>
 
             <ScrollView
@@ -99,10 +99,10 @@ export default function RoleSelectionScreen() {
                             <Text style={styles.roleIcon}>{roleOption.icon}</Text>
                             <View style={styles.roleInfo}>
                                 <Text style={styles.roleName}>
-                                    {roleOption.role.charAt(0).toUpperCase() + roleOption.role.slice(1)}
+                                    {t(`roles.${roleOption.role}`)}
                                 </Text>
                                 <Text style={styles.roleDescription}>
-                                    {roleOption.description}
+                                    {t(`roles.${roleOption.role}Desc`)}
                                 </Text>
                             </View>
                             {selectedRole === roleOption.role && (
@@ -124,7 +124,7 @@ export default function RoleSelectionScreen() {
                 disabled={!selectedRole}
                 activeOpacity={0.8}
             >
-                <Text style={styles.continueButtonText}>Continue</Text>
+                <Text style={styles.continueButtonText}>{t('common.continue')}</Text>
             </TouchableOpacity>
         </View>
     );

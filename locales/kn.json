@@ -1,0 +1,48 @@
+{
+    "kn": {
+        "translation": {
+            "common": {
+                "getStarted": "ಪ್ರಾರಂಭಿಸಿ",
+                "login": "ಲಾಗಿನ್",
+                "signup": "ಸೈನ್ ಅಪ್",
+                "email": "ಇಮೇಲ್",
+                "password": "ಪಾಸ್ವರ್ಡ್",
+                "continueWithGoogle": "ಗೂಗಲ್ ಮೂಲಕ ಮುಂದುವರಿಸಿ",
+                "selectLanguage": "ಭಾಷೆಯನ್ನು ಆರಿಸಿ",
+                "selectRole": "ನಿಮ್ಮ ಪಾತ್ರವನ್ನು ಆರಿಸಿ",
+                "continue": "ಮುಂದುವರಿಸಿ",
+                "cancel": "ರದ್ದುಮಾಡಿ",
+                "save": "ಉಳಿಸಿ",
+                "submit": "ಸಲ್ಲಿಸಿ",
+                "delete": "ಅಳಿಸಿ",
+                "edit": "ತಿದ್ದಿ",
+                "done": "ಮುಗಿದಿದೆ",
+                "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
+            },
+            "languages": {
+                "english": "English",
+                "kannada": "ಕನ್ನಡ (Kannada)",
+                "hindi": "हिन्दी (Hindi)",
+                "tulu": "ತುಳು (Tulu)"
+            },
+            "roles": {
+                "manager": "ವ್ಯವಸ್ಥಾಪಕ (Manager)",
+                "supervisor": "ಮೇಲ್ವಿಚಾರಕ (Supervisor)",
+                "worker": "ಕಾರ್ಮಿಕ (Worker)",
+                "managerDesc": "ಕ್ಷೇತಗಳು, ಕಾರ್ಮಿಕರು, ಕಾರ್ಯಗಳು ಮತ್ತು ಪಾವತಿಗಳನ್ನು ನಿರ್ವಹಿಸಿ",
+                "supervisorDesc": "ಕ್ಷೇತ್ರದ ಚಟುವಟಿಕೆಗಳನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ ಮತ್ತು ಹಾಜರಾತಿಯನ್ನು ಪರಿಶೀಲಿಸಿ",
+                "workerDesc": "ಚೆಕ್-ಇನ್ ಮಾಡಿ, ಕಾರ್ಯಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ ಮತ್ತು ವೇತನವನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ"
+            },
+            "auth": {
+                "welcome": "CrewLeaf ಗೆ ಸುಸ್ವಾಗತ",
+                "loginTitle": "ನಿಮ್ಮ ಖಾತೆಗೆ ಲಾಗಿನ್ ಮಾಡಿ",
+                "signupTitle": "ಹೊಸ ಖಾತೆಯನ್ನು ರಚಿಸಿ",
+                "emailPlaceholder": "ನಿಮ್ಮ ಇಮೇಲ್ ನಮೂದಿಸಿ",
+                "passwordPlaceholder": "ನಿಮ್ಮ ಪಾಸ್ವರ್ಡ್ ನಮೂದಿಸಿ",
+                "noAccount": "ಖಾತೆ ಇಲ್ಲವೇ?",
+                "haveAccount": "ಈಗಾಗಲೇ ಖಾತೆ ಹೊಂದಿದ್ದೀರಾ?",
+                "forgotPassword": "ಪಾಸ್ವರ್ಡ್ ಮರೆತಿರುವಿರಾ?"
+            }
+        }
+    }
+}
